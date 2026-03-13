@@ -1,0 +1,322 @@
+:root {
+    --bg-dark: #120b0a;
+    --shelf-wood: #2a1810;
+    --gold: #d4af37;
+    --gold-dim: #b8860b;
+    --text-primary: #e0d5c1;
+    --text-secondary: #a89f91;
+    --panel-bg: #f5f1e8;
+    --panel-text: #2a2a2a;
+    --accent-glow: rgba(212, 175, 55, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header Styles */
+.library-header {
+    text-align: center;
+    padding: 2rem 1rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.header-logo {
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+}
+
+.library-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    letter-spacing: 0.2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.header-meta {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    color: var(--text-secondary);
+}
+
+.header-decoration {
+    margin-top: 1rem;
+    color: var(--gold-dim);
+    font-size: 0.7rem;
+    letter-spacing: 0.5rem;
+}
+
+/* Main Layout */
+.library-main {
+    display: flex;
+    flex: 1;
+    padding: 2rem;
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Shelf Container */
+.shelf-container {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.shelf {
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.shelf-title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--text-secondary);
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.2rem;
+    border-bottom: 1px solid rgba(168, 159, 145, 0.2);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.shelf-base {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 12px;
+    background: linear-gradient(to bottom, #3d2518, #1a0f0a);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 2px;
+}
+
+.books-row {
+    display: flex;
+    gap: 8px;
+    padding: 0 10px;
+    align-items: flex-end;
+    min-height: 120px;
+}
+
+/* Book Styles */
+.book {
+    width: 24px;
+    height: var(--height, 100px);
+    background-color: var(--book-color, #4a4a4a);
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
+    position: relative;
+    border-radius: 2px 4px 4px 2px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.book:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6), 0 0 10px var(--accent-glow);
+    z-index: 10;
+}
+
+.book.active {
+    transform: translateY(-15px) rotate(-2deg);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7), 0 0 15px var(--gold);
+    border: 1px solid var(--gold);
+    z-index: 11;
+}
+
+.book-title-vertical {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    white-space: nowrap;
+    font-size: 0.6rem;
+    color: white;
+    font-weight: 600;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+/* Detail Panel */
+.detail-panel {
+    flex: 1;
+    background-color: var(--panel-bg);
+    color: var(--panel-text);
+    padding: 2.5rem;
+    border-radius: 4px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    min-width: 350px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: sticky;
+    top: 2rem;
+}
+
+.detail-panel h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 0.5rem;
+}
+
+.panel-placeholder {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0.5;
+}
+
+.detail-section {
+    margin-top: 1.5rem;
+}
+
+.detail-section h3 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    color: #888;
+    margin-bottom: 0.5rem;
+}
+
+.detail-section p,
+.detail-section ul {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.key-principles {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background: var(--panel-bg);
+    color: var(--panel-text);
+    padding: 3rem;
+    border-radius: 8px;
+    max-width: 650px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 20px var(--accent-glow);
+    animation: modalSlideIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #888;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.3s;
+}
+
+.modal-close:hover {
+    color: var(--gold);
+}
+
+#modal-body h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--gold-dim);
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+}
+
+#modal-body p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #444;
+}
+
+/* Principle Interaction */
+.key-principles li {
+    margin-bottom: 12px;
+    padding: 8px 8px 8px 25px;
+    position: relative;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.key-principles li:hover {
+    background: rgba(212, 175, 55, 0.1);
+    transform: translateX(5px);
+}
+
+.key-principles li::before {
+    content: "⊹";
+    position: absolute;
+    left: 8px;
+    color: var(--gold-dim);
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gold-dim);
+    border-radius: 10px;
+}

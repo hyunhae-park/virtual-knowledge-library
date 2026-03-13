@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIBAN Knowledge Library - Ontology Visualization</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="library-header">
+            <div class="header-logo">⊗</div>
+            <h1>KIBAN KNOWLEDGE LIBRARY</h1>
+            <div class="header-meta">
+                <span id="framework-count">16가지 프레임워크</span> •
+                <span id="discipline-count">5가지 학문 분야</span> •
+                <span>지속적인 업데이트</span>
+            </div>
+            <div class="header-decoration">✦ ———————— ✦ ———————— ✦</div>
+        </header>
+
+        <main class="library-main">
+            <section class="shelf-container" id="shelf-container">
+                <!-- JavaScript로 책장이 생성됩니다 -->
+            </section>
+
+            <aside class="detail-panel" id="detail-panel">
+                <div class="panel-placeholder">
+                    <h2>지식 상세 정보</h2>
+                    <p>책장에서 지식을 선택하여 상세 내용을 확인하세요.</p>
+                </div>
+                <div id="panel-content" class="hidden">
+                    <!-- JavaScript로 상세 정보가 채워집니다 -->
+                </div>
+            </aside>
+        </main>
+    </div>
+    <div id="summary-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <div id="modal-body">
+                <!-- Summary content goes here -->
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
